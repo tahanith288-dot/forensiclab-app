@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Cyber Forensics Lab{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand" href="{{ url_for('dashboard') }}"><span class="brand-mark">CF</span><span>CYBER<span class="brand-light">FORENSICS</span><small>INVESTIGATION SUITE</small></span></a>
+    <div class="nav-label">WORKSPACE</div>
+    <a class="nav {% if request.endpoint=='dashboard' %}active{% endif %}" href="{{ url_for('dashboard') }}"><span>▦</span> Overview</a>
+    <a class="nav {% if request.endpoint in ['cases','new_case','case_detail'] %}active{% endif %}" href="{{ url_for('cases') }}"><span>▤</span> Case Files</a>
+    <a class="nav {% if request.endpoint in ['findings_page','evidence_detail'] %}active{% endif %}" href="{{ url_for('findings_page') }}"><span>⌕</span> Findings</a>
+    <a class="nav {% if request.endpoint=='timeline' %}active{% endif %}" href="{{ url_for('timeline') }}"><span>◷</span> Event Timeline</a>
+    <div class="nav-label lower">SYSTEM</div>
+    <a class="nav {% if request.endpoint=='settings' %}active{% endif %}" href="{{ url_for('settings') }}"><span>⚙</span> Configuration</a>
+    <div class="sidebar-bottom"><span class="status-dot"></span> LOCAL ENVIRONMENT <small>v1.0.0 · OFFLINE READY</small></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div><span class="crumb">FORENSIC WORKSPACE</span><span class="top-title">{% block page_title %}Overview{% endblock %}</span></div><div class="top-right"><span class="secure-pill"><i></i> LOCAL INSTANCE</span><span class="avatar">DF</span></div></header>
+    <section class="content">
+      {% with messages=get_flashed_messages(with_categories=true) %}{% if messages %}{% for category,message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}{% endif %}{% endwith %}
+      {% block content %}{% endblock %}
+      <footer>CYBER FORENSICS LAB <span>·</span> DIGITAL EVIDENCE MANAGEMENT <span class="foot-right">LOCAL WORKSPACE · v1.0.0</span></footer>
+    </section>
+  </main>
+</div>
+</body></html>

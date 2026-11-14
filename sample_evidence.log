@@ -1,0 +1,5 @@
+2026-01-01T09:00:00Z INFO Service started
+2026-01-01T09:04:12Z WARN Failed password for testuser from 192.0.2.10
+2026-01-01T09:04:18Z WARN Failed password for testuser from 192.0.2.10
+2026-01-01T09:05:01Z INFO User session ended
+2026-01-01T09:08:33Z ALERT powershell.exe -EncodedCommand UABPAFcARQBSAFMASABFAEwATAA=
